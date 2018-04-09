@@ -47,5 +47,7 @@ $.extend( $.validator.messages, {
 	nifES: "Veuillez fournir un numéro NIF valide.",
 	nieES: "Veuillez fournir un numéro NIE valide.",
 	cifES: "Veuillez fournir un numéro CIF valide.",
+        maxChecked: $.validator.format( "Veuillez cocher uniquement {0} valeurs ou moins." ),
+        maxSelected: $.validator.format( "Veuillez selectioner uniquement {0} valeurs ou moins." ),
 	postalCodeCA: "Veuillez fournir un code postal valide."
 } );
