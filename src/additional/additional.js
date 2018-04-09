@@ -1,7 +1,5 @@
 ( function() {
 
-        var wordRegex = '/[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ0-9]+/g';
-
 	function stripHtml( value ) {
 
 		// Remove html tags and space chars
@@ -12,17 +10,17 @@
 	}
 
 	$.validator.addMethod( "maxWords", function( value, element, params ) {
-		return this.optional( element ) || stripHtml( value ).match( wordRegex ).length <= params;
+		return this.optional( element ) || stripHtml( value ).match( /[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ0-9]+/g ).length <= params;
 	}, $.validator.format( "Please enter {0} words or less." ) );
 
 	$.validator.addMethod( "minWords", function( value, element, params ) {
-		return this.optional( element ) || stripHtml( value ).match( wordRegex ).length >= params;
+		return this.optional( element ) || stripHtml( value ).match( /[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ0-9]+/g ).length >= params;
 	}, $.validator.format( "Please enter at least {0} words." ) );
 
 	$.validator.addMethod( "rangeWords", function( value, element, params ) {
 		var valueStripped = stripHtml( value );
 
-		return this.optional( element ) || valueStripped.match( wordRegex ).length >= params[ 0 ] && valueStripped.match( wordRegex ).length <= params[ 1 ];
+		return this.optional( element ) || valueStripped.match( /[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ0-9]+/g ).length >= params[ 0 ] && valueStripped.match( /[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ0-9]+/g ).length <= params[ 1 ];
 	}, $.validator.format( "Please enter between {0} and {1} words." ) );
 
 }() );
